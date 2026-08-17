@@ -8,7 +8,7 @@
     <style>
         .ministerial-bg {
             background-color: #0b192c;
-            background-image: linear-gradient(rgba(11, 25, 44, 0.85), rgba(11, 25, 44, 0.9)), 
+            background-image: linear-gradient(rgba(11, 25, 44, 0.88), rgba(11, 25, 44, 0.92)), 
                               url('1000228178.jpg');
             background-size: cover;
             background-position: center;
@@ -20,72 +20,96 @@
         .navy-bg { background-color: #0b192c; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="ministerial-bg text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- BARRA SUPERIOR -->
-    <div class="navy-bg text-white py-2.5 px-4 text-center font-medium text-xs tracking-widest border-b border-amber-500/30">
-        MINISTERIO PROFÉTICO HACIENDO SU VOLUNTAD • DESDE 2019
+    <div>
+        <!-- BARRA SUPERIOR INSTITUCIONAL -->
+        <div class="bg-black/40 backdrop-blur-md text-white py-2.5 px-4 text-center font-medium text-xs tracking-widest border-b border-amber-500/30">
+            MINISTERIO PROFÉTICO HACIENDO SU VOLUNTAD • DESDE 2019
+        </div>
+
+        <!-- PORTADA / HERO -->
+        <header class="py-20 md:py-28 px-6 text-center border-b border-white/10">
+            <div class="max-w-4xl mx-auto">
+                
+                <div class="inline-block border gold-border text-amber-300 text-xs font-semibold uppercase px-5 py-2 rounded-full tracking-widest mb-6 bg-black/40 backdrop-blur-sm">
+                    Cierre de Ciclo de 7 Años • Santo Domingo
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-serif font-light mb-6 text-white leading-tight">
+                    Ayuno de 40 Días & <br/><span class="font-bold gold-accent">Gran Marcha Nacional</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed italic">
+                    "En 2019 Dios envió a la profeta Rocío Rodríguez a convocar ayuno nacional. Hoy cerramos 7 años en Santo Domingo."
+                </p>
+
+                <!-- Tarjeta Central de Cierre -->
+                <div class="bg-black/40 backdrop-blur-md border gold-border rounded-xl p-6 max-w-lg mx-auto shadow-2xl">
+                    <p class="gold-accent font-semibold text-lg uppercase tracking-wider mb-1">Cierre e Impacto Final</p>
+                    <p class="text-white text-base">20 de Septiembre, 2026 • Faro a Colón</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- SECCIÓN: ESTRUCTURA 32 + 8 -->
+        <section class="py-20 px-6 max-w-5xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-white">¿En qué consiste el Ayuno de 40 Días?</h2>
+                <div class="w-16 h-0.5 gold-bg mx-auto mb-6"></div>
+                <p class="text-slate-300 text-lg font-light leading-relaxed">
+                    Un despliegue espiritual estructurado para cubrir cada rincón de la nación en unidad de propósito.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-xl">
+                    <span class="gold-accent font-bold tracking-widest text-xs uppercase block mb-2">Primera Etapa</span>
+                    <h3 class="text-2xl font-serif font-bold text-white mb-4">32 Días = 32 Provincias</h3>
+                    <p class="text-slate-300 leading-relaxed font-light">
+                        Una provincia por día en ayuno continuo, iniciando el 12 de agosto. Cada territorio se levanta en intercesión sincronizada a nivel nacional.
+                    </p>
+                </div>
+
+                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-xl">
+                    <span class="gold-accent font-bold tracking-widest text-xs uppercase block mb-2">Segunda Etapa</span>
+                    <h3 class="text-2xl font-serif font-bold text-white mb-4">8 Días en Santo Domingo</h3>
+                    <p class="text-slate-300 leading-relaxed font-light">
+                        El culmen del ciclo de 7 años se concentra en la capital, preparando espiritualmente el gran cierre masivo de la nación.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CIERRE Y VESTIMENTA (FARO A COLÓN) -->
+        <section class="py-20 px-6 text-center bg-black/20 border-t border-white/10">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-white">Gran Marcha Nacional y Cierre</h2>
+                <div class="w-16 h-0.5 gold-bg mx-auto mb-8"></div>
+                
+                <p class="text-slate-200 text-lg mb-10 leading-relaxed font-light">
+                    El 20 de septiembre de 2026 nos congregaremos solemnemente en el Faro a Colón para sellar este ciclo de 7 años en unidad nacional.
+                </p>
+
+                <!-- BLOQUE DE VESTIMENTA BLANCA -->
+                <div class="bg-white/10 backdrop-blur-md border gold-border p-8 rounded-xl inline-block max-w-lg mb-10 shadow-2xl">
+                    <p class="gold-accent font-bold text-lg uppercase tracking-widest mb-3">Código de Vestimenta</p>
+                    <p class="text-slate-100 font-light leading-relaxed">
+                        Se solicita a todos los participantes acudir con <strong>vestimenta completamente blanca</strong> como símbolo de unidad, pureza y consagración en este cierre de ciclo.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="inline-block gold-bg text-[#0b192c] font-bold px-8 py-4 rounded-lg shadow-lg tracking-wider text-sm md:text-base uppercase">
+                        Faro a Colón • 20 de Septiembre, 2026
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- PORTADA / HERO -->
-    <header class="ministerial-bg text-white py-24 px-6 text-center border-b-4 gold-border">
-        <div class="max-w-4xl mx-auto">
-            <div class="inline-block border gold-border text-amber-300 text-xs font-semibold uppercase px-5 py-2 rounded-full tracking-widest mb-6 bg-black/30 backdrop-blur-sm">
-                Cierre de Ciclo de 7 Años
-            </div>
-            <h1 class="text-4xl md:text-6xl font-serif font-light mb-6 text-white leading-tight">
-                Ayuno de 40 Días & <br/><span class="font-bold gold-accent">Gran Marcha Nacional</span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light italic">
-                "En 2019 Dios envió a la profeta Rocío Rodríguez a convocar ayuno nacional. Hoy cerramos 7 años en Santo Domingo."
-            </p>
-        </div>
-    </header>
-
-    <!-- INFO: 32 + 8 -->
-    <section class="py-20 px-6 max-w-5xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="navy-bg text-white p-10 rounded-2xl shadow-xl">
-                <h3 class="text-2xl font-serif font-bold gold-accent mb-4">32 Días • 32 Provincias</h3>
-                <p class="text-slate-300 leading-relaxed">
-                    Una provincia por día en ayuno continuo, iniciando el 12 de agosto. Cada territorio se levanta en intercesión sincronizada a nivel nacional.
-                </p>
-            </div>
-            <div class="navy-bg text-white p-10 rounded-2xl shadow-xl">
-                <h3 class="text-2xl font-serif font-bold gold-accent mb-4">8 Días • Cierre en la Capital</h3>
-                <p class="text-slate-300 leading-relaxed">
-                    El culmen del ciclo de 7 años se concentra en Santo Domingo. Intercesión intensiva final preparando el corazón de la nación.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CIERRE: FARO A COLÓN -->
-    <section class="ministerial-bg py-20 px-6 text-center text-white">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Gran Marcha Nacional y Cierre</h2>
-            <div class="w-16 h-0.5 gold-bg mx-auto mb-8"></div>
-            
-            <p class="text-slate-200 text-lg mb-10 leading-relaxed">
-                El 20 de septiembre de 2026 nos congregaremos solemnemente en el Faro a Colón para sellar este ciclo de 7 años en unidad nacional.
-            </p>
-
-            <!-- INSTRUCCIÓN VESTIMENTA -->
-            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-xl inline-block max-w-lg mb-10">
-                <p class="gold-accent font-bold text-lg uppercase tracking-widest mb-3">Código de Vestimenta</p>
-                <p class="text-white font-medium">
-                    Se solicita a todos los participantes acudir con <strong>vestimenta completamente blanca</strong> como símbolo de unidad, pureza y consagración en este cierre de ciclo.
-                </p>
-            </div>
-
-            <div class="block gold-bg text-[#0b192c] font-bold px-8 py-4 rounded-lg shadow-lg tracking-wider text-sm md:text-base uppercase">
-                Faro a Colón • 20 de Septiembre, 2026
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="py-10 navy-bg text-slate-400 text-center text-sm border-t border-slate-800">
+    <!-- FOOTER INSTITUCIONAL -->
+    <footer class="py-10 bg-black/60 backdrop-blur-md text-slate-400 text-center text-xs md:text-sm tracking-wide border-t border-white/10">
         <p>Ministerio Profético Haciendo Su Voluntad • República Dominicana</p>
         <p class="mt-2 gold-accent font-light">Cierre de Ciclo de 7 Años • 2019 - 2026</p>
     </footer>

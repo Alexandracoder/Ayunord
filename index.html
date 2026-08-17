@@ -17,7 +17,6 @@
         .gold-accent { color: #d4af37; }
         .gold-border { border-color: #d4af37; }
         .gold-bg { background-color: #d4af37; }
-        .navy-bg { background-color: #0b192c; }
     </style>
 </head>
 <body class="ministerial-bg text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
@@ -52,7 +51,7 @@
             </div>
         </header>
 
-        <!-- SECCIÓN: ESTRUCTURA 32 + 8 -->
+        <!-- SECCIÓN: ESTRUCTURA 32 + 8 (CON BULLETS DORADOS Y BANDERAS) -->
         <section class="py-20 px-6 max-w-5xl mx-auto">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-white">¿En qué consiste el Ayuno de 40 Días?</h2>
@@ -63,20 +62,42 @@
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-xl">
-                    <span class="gold-accent font-bold tracking-widest text-xs uppercase block mb-2">Primera Etapa</span>
+                <!-- Tarjeta 1 -->
+                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-xl relative overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="text-2xl">🇩🇴</span>
+                        <span class="gold-accent font-bold tracking-widest text-xs uppercase">Primera Etapa</span>
+                    </div>
                     <h3 class="text-2xl font-serif font-bold text-white mb-4">32 Días = 32 Provincias</h3>
-                    <p class="text-slate-300 leading-relaxed font-light">
-                        Una provincia por día en ayuno continuo, iniciando el 12 de agosto. Cada territorio se levanta en intercesión sincronizada a nivel nacional.
-                    </p>
+                    <ul class="space-y-3 text-slate-300 font-light">
+                        <li class="flex items-start">
+                            <span class="text-amber-400 mr-2 text-lg font-bold">✦</span>
+                            <span>Una provincia por día en ayuno continuo, iniciando el 12 de agosto.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-amber-400 mr-2 text-lg font-bold">✦</span>
+                            <span>Cada territorio se levanta en intercesión sincronizada a nivel nacional.</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-xl">
-                    <span class="gold-accent font-bold tracking-widest text-xs uppercase block mb-2">Segunda Etapa</span>
+                <!-- Tarjeta 2 -->
+                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-xl relative overflow-hidden">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="text-2xl">🇩🇴</span>
+                        <span class="gold-accent font-bold tracking-widest text-xs uppercase">Segunda Etapa</span>
+                    </div>
                     <h3 class="text-2xl font-serif font-bold text-white mb-4">8 Días en Santo Domingo</h3>
-                    <p class="text-slate-300 leading-relaxed font-light">
-                        El culmen del ciclo de 7 años se concentra en la capital, preparando espiritualmente el gran cierre masivo de la nación.
-                    </p>
+                    <ul class="space-y-3 text-slate-300 font-light">
+                        <li class="flex items-start">
+                            <span class="text-amber-400 mr-2 text-lg font-bold">✦</span>
+                            <span>El culmen del ciclo de 7 años se concentra en la capital.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-amber-400 mr-2 text-lg font-bold">✦</span>
+                            <span>Intercesión intensiva final preparando el corazón de la nación.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>

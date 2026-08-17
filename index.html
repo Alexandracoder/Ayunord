@@ -6,24 +6,24 @@
     <title>¡ALERTA PROFÉTICA! Ayuno de 40 Días - República Dominicana | Gran Marcha Faro a Colón</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes pulse-fast {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.02); }
-        }
-        .urgent-pulse {
-            animation: pulse-fast 2s infinite;
-        }
-        /* Fondo general para toda la página con la imagen integrada */
-        .global-bg {
-            background-color: #002D62;
-            background-image: linear-gradient(rgba(0, 20, 40, 0.92), rgba(0, 20, 40, 0.92)), 
-                              url('IMG-20260817-WA0029.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-    </style>
+    @keyframes pulse-fast {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.9; transform: scale(1.02); }
+    }
+    .urgent-pulse {
+        animation: pulse-fast 2s infinite;
+    }
+    /* Fondo mejorado: Degradado con viñeta para que la foto resalte más al centro */
+    .global-bg {
+        background-color: #002D62;
+        background-image: radial-gradient(circle at center, rgba(0, 20, 40, 0.75) 0%, rgba(0, 10, 25, 0.95) 100%), 
+                          url('IMG-20260817-WA0029.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 100vh;
+    }
+</style>
 </head>
 <body class="global-bg text-slate-100 font-sans">
 

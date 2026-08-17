@@ -13,25 +13,27 @@
         .urgent-pulse {
             animation: pulse-fast 2s infinite;
         }
-        .flag-bg {
+        /* Fondo general para toda la página con la imagen integrada */
+        .global-bg {
             background-color: #002D62;
-            background-image: linear-gradient(rgba(0, 20, 40, 0.85), rgba(0, 20, 40, 0.85)), 
+            background-image: linear-gradient(rgba(0, 20, 40, 0.92), rgba(0, 20, 40, 0.92)), 
                               url('IMG-20260817-WA0029.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            min-height: 100vh;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans">
+<body class="global-bg text-slate-100 font-sans">
 
     <!-- Top Banner de Alerta Profética -->
-    <div class="bg-[#CE1126] text-white py-3 px-4 text-center font-bold text-sm md:text-base tracking-wide urgent-pulse shadow-md">
+    <div class="bg-[#CE1126] text-white py-3 px-4 text-center font-bold text-sm md:text-base tracking-wide urgent-pulse shadow-md border-b-2 border-amber-300">
         ⚠️ ¡LLAMADO URGENTE Y PROFÉTICO! El Señor ha hablado sobre nuestra nación. ¡Es tiempo de doblar rodillas y actuar! ⚠️
     </div>
 
-    <!-- Hero Section con la Imagen de Fondo -->
-    <header class="flag-bg text-white py-16 md:py-24 px-6 text-center relative overflow-hidden border-b-8 border-[#CE1126]">
+    <!-- Header Principal -->
+    <header class="py-16 md:py-20 px-6 text-center relative overflow-hidden border-b-4 border-[#CE1126]">
         <div class="max-w-4xl mx-auto relative z-10">
             
             <div class="inline-flex items-center gap-2 bg-[#CE1126] text-white text-xs md:text-sm font-extrabold uppercase px-4 py-1.5 rounded-full tracking-widest shadow-lg mb-4">
@@ -42,18 +44,18 @@
                 Ayuno de 40 Días & <br/><span class="text-amber-300 underline decoration-[#CE1126] decoration-4">Gran Marcha Nacional</span>
             </h1>
             
-            <p class="text-xl md:text-2xl text-slate-100 mb-8 max-w-2xl mx-auto font-medium drop-shadow-md">
-                Ha venido palabra profética del Señor para la República Dominicana. Todo el pueblo debe levantarse in unidad, ayuno y acción. ¡Nuestra nación está en un tiempo decisivo!
+            <p class="text-xl md:text-2xl text-slate-200 mb-8 max-w-2xl mx-auto font-medium drop-shadow-md">
+                Ha venido palabra profética del Señor para la República Dominicana. Todo el pueblo debe levantarse en unidad, ayuno y acción. ¡Nuestra nación está en un tiempo decisivo!
             </p>
             
             <!-- Contador Regresivo -->
-            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-xl mx-auto mb-10 shadow-2xl">
+            <div class="bg-black/40 backdrop-blur-md border border-white/20 rounded-2xl p-6 max-w-xl mx-auto mb-10 shadow-2xl">
                 <p class="text-amber-300 font-bold text-xl mb-3">📅 Cierre: 20 de Septiembre, 2026 | Faro a Colón</p>
                 <div id="countdown" class="grid grid-cols-4 gap-2 text-center text-white">
-                    <div class="bg-black/30 p-2 rounded-xl"><span id="days" class="text-2xl font-black block">00</span><span class="text-xs uppercase">Días</span></div>
-                    <div class="bg-black/30 p-2 rounded-xl"><span id="hours" class="text-2xl font-black block">00</span><span class="text-xs uppercase">Horas</span></div>
-                    <div class="bg-black/30 p-2 rounded-xl"><span id="minutes" class="text-2xl font-black block">00</span><span class="text-xs uppercase">Min</span></div>
-                    <div class="bg-black/30 p-2 rounded-xl"><span id="seconds" class="text-2xl font-black block">00</span><span class="text-xs uppercase">Seg</span></div>
+                    <div class="bg-black/40 p-2 rounded-xl border border-white/10"><span id="days" class="text-2xl font-black block">00</span><span class="text-xs uppercase">Días</span></div>
+                    <div class="bg-black/40 p-2 rounded-xl border border-white/10"><span id="hours" class="text-2xl font-black block">00</span><span class="text-xs uppercase">Horas</span></div>
+                    <div class="bg-black/40 p-2 rounded-xl border border-white/10"><span id="minutes" class="text-2xl font-black block">00</span><span class="text-xs uppercase">Min</span></div>
+                    <div class="bg-black/40 p-2 rounded-xl border border-white/10"><span id="seconds" class="text-2xl font-black block">00</span><span class="text-xs uppercase">Seg</span></div>
                 </div>
             </div>
 
@@ -61,7 +63,7 @@
                 <a href="#unete" class="bg-[#CE1126] hover:bg-red-700 text-white font-extrabold text-lg px-8 py-4 rounded-xl shadow-xl transition transform hover:-translate-y-0.5">
                     👥 Únete a un Grupo de Oración
                 </a>
-                <a href="#recursos" class="bg-white hover:bg-slate-100 text-[#002D62] font-extrabold text-lg px-8 py-4 rounded-xl shadow-xl transition transform hover:-translate-y-0.5">
+                <a href="#recursos" class="bg-white hover:bg-slate-200 text-[#002D62] font-extrabold text-lg px-8 py-4 rounded-xl shadow-xl transition transform hover:-translate-y-0.5">
                     🎨 Kit de Flyers y Difusión
                 </a>
             </div>
@@ -70,46 +72,48 @@
 
     <!-- Sección de Urgencia -->
     <section class="py-16 px-6 max-w-4xl mx-auto text-center">
-        <div class="inline-block p-3 bg-red-100 text-[#CE1126] rounded-full mb-4">
+        <div class="inline-block p-3 bg-red-900/60 text-red-300 rounded-full mb-4 border border-red-500/30">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
         </div>
-        <h2 class="text-3xl font-black text-slate-900 mb-6">¿Por qué este ayuno es URGENTE?</h2>
-        <p class="text-lg text-slate-700 leading-relaxed mb-6">
-            El cielo ha hablado. Hemos recibido una clara advertencia y dirección profética del Señor para la República Dominicana. Este no es un tiempo común; es una hora de intercesión profunda, arrepentimiento y movilización total. 
-        </p>
-        <p class="text-lg text-slate-700 leading-relaxed font-semibold">
-            Dios está llamando a cada hijo e hija de esta patria a humillarse en este <span class="text-[#CE1126]">ayuno de 40 días</span> para cerrar brechas, alzar la voz en los barrios y congregarnos masivamente el <span class="text-[#002D62]">20 de septiembre en el Faro a Colón</span>. ¡Nadie puede quedarse sentado; todos debemos actuar!
-        </p>
+        <h2 class="text-3xl font-black text-white mb-6 drop-shadow-md">¿Por qué este ayuno es URGENTE?</h2>
+        <div class="bg-black/30 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-xl space-y-4 text-lg text-slate-200 leading-relaxed">
+            <p>
+                El cielo ha hablado. Hemos recibido una clara advertencia y dirección profética del Señor para la República Dominicana. Este no es un tiempo común; es una hora de intercesión profunda, arrepentimiento y movilización total. 
+            </p>
+            <p class="font-semibold text-amber-200">
+                Dios está llamando a cada hijo e hija de esta patria a humillarse en este ayuno de 40 días para cerrar brechas, alzar la voz en los barrios y congregarnos masivamente el 20 de septiembre en el Faro a Colón. ¡Nadie puede quedarse sentado; todos debemos actuar!
+            </p>
+        </div>
     </section>
 
     <!-- Sección de Enlaces y Recursos -->
-    <section id="unete" class="bg-slate-100 py-16 px-6 border-y border-slate-200">
+    <section id="unete" class="py-16 px-6 bg-black/20 border-y border-white/10 backdrop-blur-sm">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-black text-center text-slate-900 mb-4">Cómo Colaborar y Organizarte</h2>
-            <p class="text-center text-slate-600 mb-12 max-w-xl mx-auto">Lleva este movimiento a tu sector, iglesia o comunidad. La victoria se construye en equipo.</p>
+            <h2 class="text-3xl font-black text-center text-white mb-4">Cómo Colaborar y Organizarte</h2>
+            <p class="text-center text-slate-300 mb-12 max-w-xl mx-auto">Lleva este movimiento a tu sector, iglesia o comunidad. La victoria se construye en equipo.</p>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white border-t-4 border-[#002D62] rounded-2xl p-8 shadow-md text-center hover:shadow-xl transition">
+                <div class="bg-slate-900/80 border-t-4 border-[#002D62] rounded-2xl p-8 shadow-2xl text-center border-x border-b border-white/10 hover:border-white/30 transition">
                     <div class="text-4xl mb-4">📢</div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Grupos de WhatsApp por Sector</h3>
-                    <p class="text-slate-600 mb-6">Conéctate con tu provincia o barrio para coordinar los días de ayuno local y organizar el transporte hacia el Faro a Colón.</p>
-                    <a href="https://chat.whatsapp.com/TU-ENLACE-AQUI" target="_blank" class="inline-block bg-[#002D62] hover:bg-blue-900 text-white font-bold px-6 py-3 rounded-xl transition shadow-md">Unirme al Grupo</a>
+                    <h3 class="text-xl font-bold text-white mb-3">Grupos de WhatsApp por Sector</h3>
+                    <p class="text-slate-300 mb-6 text-sm">Conéctate con tu provincia o barrio para coordinar los días de ayuno local y organizar el transporte hacia el Faro a Colón.</p>
+                    <a href="https://chat.whatsapp.com/TU-ENLACE-AQUI" target="_blank" class="inline-block bg-[#002D62] hover:bg-blue-800 text-white font-bold px-6 py-3 rounded-xl transition shadow-md">Unirme al Grupo</a>
                 </div>
 
-                <div id="recursos" class="bg-white border-t-4 border-[#CE1126] rounded-2xl p-8 shadow-md text-center hover:shadow-xl transition">
+                <div id="recursos" class="bg-slate-900/80 border-t-4 border-[#CE1126] rounded-2xl p-8 shadow-2xl text-center border-x border-b border-white/10 hover:border-white/30 transition">
                     <div class="text-4xl mb-4">🎨</div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Flyers y Material de Calle</h3>
-                    <p class="text-slate-600 mb-6">Descarga los flyers oficiales con los colores patrios, listos para enviar por WhatsApp, estados y para imprimir volantes.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Flyers y Material de Calle</h3>
+                    <p class="text-slate-300 mb-6 text-sm">Descarga los flyers oficiales con los colores patrios, listos para enviar por WhatsApp, estados y para imprimir volantes.</p>
                     <a href="https://drive.google.com/drive/folders/1w8B65tm2NBX5pO843VzOONhhfeMrlZHI?usp=sharing" target="_blank" class="inline-block bg-[#CE1126] hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl transition shadow-md">Descargar Flyers (Drive)</a>
                 </div>
 
-                <div class="bg-white border-t-4 border-amber-500 rounded-2xl p-8 shadow-md text-center hover:shadow-xl transition">
+                <div class="bg-slate-900/80 border-t-4 border-amber-500 rounded-2xl p-8 shadow-2xl text-center border-x border-b border-white/10 hover:border-white/30 transition">
                     <div class="text-4xl mb-4">🚌</div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Guaguas y Movilización</h3>
-                    <p class="text-slate-600 mb-6">¿Vienes desde los pueblos? Infórmate sobre los puntos de salida de vehículos y guaguas para la gran marcha.</p>
-                    <a href="https://chat.whatsapp.com/TU-ENLACE-AQUI" target="_blank" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-6 py-3 rounded-xl transition shadow-md">Ver Puntos de Salida</a>
+                    <h3 class="text-xl font-bold text-white mb-3">Guaguas y Movilización</h3>
+                    <p class="text-slate-300 mb-6 text-sm">¿Vienes desde los pueblos? Infórmate sobre los puntos de salida de vehículos y guaguas para la gran marcha.</p>
+                    <a href="https://chat.whatsapp.com/TU-ENLACE-AQUI" target="_blank" class="inline-block bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition shadow-md">Ver Puntos de Salida</a>
                 </div>
             </div>
         </div>
@@ -117,26 +121,26 @@
 
     <!-- Sección FAQ -->
     <section class="py-16 px-6 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-black text-center text-slate-900 mb-2">Preguntas Frecuentes</h2>
-        <p class="text-center text-slate-600 mb-10">Todo lo que necesitas saber para sumarte al llamado.</p>
+        <h2 class="text-3xl font-black text-center text-white mb-2">Preguntas Frecuentes</h2>
+        <p class="text-center text-slate-300 mb-10">Todo lo que necesitas saber para sumarte al llamado.</p>
         
         <div class="space-y-4">
-            <details class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 group">
-                <summary class="font-bold text-lg text-[#002D62] cursor-pointer flex justify-between items-center">
+            <details class="bg-slate-900/80 p-6 rounded-xl shadow-lg border border-white/10 group">
+                <summary class="font-bold text-lg text-amber-300 cursor-pointer flex justify-between items-center">
                     ¿Cómo puedo unirme al ayuno desde mi casa o iglesia?
                     <span class="text-sm text-slate-400 group-open:rotate-180 transition">▼</span>
                 </summary>
-                <p class="mt-3 text-slate-700 text-base">
+                <p class="mt-3 text-slate-300 text-base">
                     [Espacio reservado para colocar las indicaciones de cómo realizar el ayuno, horarios o pautas específicas].
                 </p>
             </details>
 
-            <details class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 group">
-                <summary class="font-bold text-lg text-[#002D62] cursor-pointer flex justify-between items-center">
+            <details class="bg-slate-900/80 p-6 rounded-xl shadow-lg border border-white/10 group">
+                <summary class="font-bold text-lg text-amber-300 cursor-pointer flex justify-between items-center">
                     ¿Cuáles son los puntos de encuentro para la Gran Marcha en el Faro a Colón?
                     <span class="text-sm text-slate-400 group-open:rotate-180 transition">▼</span>
                 </summary>
-                <p class="mt-3 text-slate-700 text-base">
+                <p class="mt-3 text-slate-300 text-base">
                     [Espacio reservado para detallar la hora exacta de llegada, sectores y accesos al monumento].
                 </p>
             </details>
@@ -161,7 +165,7 @@
     </script>
 
     <!-- Footer -->
-    <footer class="py-8 bg-slate-950 text-slate-400 text-center text-sm border-t border-slate-800">
+    <footer class="py-8 bg-black/80 text-slate-400 text-center text-sm border-t border-white/10 backdrop-blur-md">
         <p>República Dominicana 🇩🇴 • Un solo clamor, un solo corazón. #Ayuno40DiasRD #FaroAColon2026</p>
     </footer>
 

@@ -382,10 +382,15 @@
   .rsvp-box > p{color:var(--ink-dim); font-size:15.5px; margin-bottom:28px;}
   .rsvp-form{display:flex; flex-direction:column; gap:14px;}
   .rsvp-row{display:flex; gap:14px;}
-  .rsvp-row input, .rsvp-form > input[type="email"]{
+  .rsvp-row input, .rsvp-form > input[type="email"], .rsvp-form select{
     flex:1; width:100%; background:rgba(7,14,34,0.55); border:1px solid var(--navy-line);
     color:var(--ink); font-family:var(--body); font-size:16px; padding:12px 14px; border-radius:2px;
   }
+  .rsvp-form select{appearance:none; -webkit-appearance:none;
+    background-image:linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+    background-position:calc(100% - 18px) center, calc(100% - 13px) center; background-size:5px 5px, 5px 5px; background-repeat:no-repeat;
+  }
+  .rsvp-form select:invalid{color:var(--ink-dim);}
   .rsvp-row input::placeholder, .rsvp-form input::placeholder{color:var(--ink-dim); opacity:.8;}
   .rsvp-row input:focus, .rsvp-form input:focus{outline:none; border-color:var(--gold);}
   .rsvp-note{
@@ -703,10 +708,29 @@
       </div>
     </div>
 
-    <div class="volunteer-cta reveal">
+    <div class="volunteer-cta reveal" id="colabora-form">
       <h4>Sirve en el cierre del ciclo</h4>
       <p>Cuéntanos en qué área te gustaría apoyar y te contactaremos con los detalles de tu turno.</p>
-      <a href="mailto:ministerioprofeticohsv@gmail.com?subject=Quiero%20colaborar%20el%2020%20de%20septiembre&body=Nombre%3A%0AProvincia%2Fciudad%3A%0AÁrea%20en%20la%20que%20deseo%20colaborar%20(Seguridad%2C%20Parqueo%2C%20Logística%2C%20Hospitalidad%2C%20Oración)%3A%0ATeléfono%3A" class="cta-primary">Quiero Colaborar</a>
+      <form action="https://formsubmit.co/ministerioprofeticohsv@gmail.com" method="POST" class="rsvp-form">
+        <input type="hidden" name="_subject" value="Quiero colaborar — Cierre 20 de Septiembre">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://ministerioprofeticohsv.github.io/AyunoRD2019-2026/?colaborar=confirmado#colabora">
+        <div class="rsvp-row">
+          <input type="text" name="Nombre" placeholder="Nombre completo" required>
+          <input type="text" name="Provincia o ciudad" placeholder="Provincia / ciudad" required>
+        </div>
+        <select name="Área en la que deseo colaborar" required>
+          <option value="" disabled selected>Área en la que deseo colaborar</option>
+          <option>Seguridad</option>
+          <option>Parqueo</option>
+          <option>Logística</option>
+          <option>Hospitalidad</option>
+          <option>Oración e Intercesión</option>
+        </select>
+        <input type="tel" name="Teléfono" placeholder="Teléfono" required>
+        <button type="submit" class="cta-primary">Quiero Colaborar</button>
+      </form>
     </div>
   </div>
 </section>
@@ -751,6 +775,12 @@
       var rsvpBox = document.getElementById('rsvp');
       if(rsvpBox){
         rsvpBox.innerHTML = '<h4>¡Gracias por confirmar!</h4><p>Hemos recibido tu asistencia para el Cierre Masivo del 20 de septiembre. Nos vemos en el Faro a Colón.</p>';
+      }
+    }
+    if(params.get('colaborar') === 'confirmado'){
+      var volBox = document.getElementById('colabora-form');
+      if(volBox){
+        volBox.innerHTML = '<h4>¡Gracias por servir!</h4><p>Hemos recibido tu disposición para colaborar el 20 de septiembre. Te contactaremos con los detalles de tu turno.</p>';
       }
     }
   }catch(e){}

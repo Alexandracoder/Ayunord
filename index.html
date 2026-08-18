@@ -373,6 +373,28 @@
   .close-cta-sub a{color:var(--gold-bright); border-bottom:1px solid var(--gold-dim);}
   .close-cta-sub a:hover{color:var(--white);}
 
+  .rsvp-box{
+    max-width:640px; margin:70px auto 0; text-align:center;
+    border:1px solid var(--gold); padding:44px 40px;
+    background:linear-gradient(180deg, rgba(201,162,78,0.08), transparent);
+  }
+  .rsvp-box h4{font-family:var(--serif); font-size:1.5rem; color:var(--white); margin-bottom:8px; font-weight:600;}
+  .rsvp-box > p{color:var(--ink-dim); font-size:15.5px; margin-bottom:28px;}
+  .rsvp-form{display:flex; flex-direction:column; gap:14px;}
+  .rsvp-row{display:flex; gap:14px;}
+  .rsvp-row input, .rsvp-form > input[type="email"]{
+    flex:1; width:100%; background:rgba(7,14,34,0.55); border:1px solid var(--navy-line);
+    color:var(--ink); font-family:var(--body); font-size:16px; padding:12px 14px; border-radius:2px;
+  }
+  .rsvp-row input::placeholder, .rsvp-form input::placeholder{color:var(--ink-dim); opacity:.8;}
+  .rsvp-row input:focus, .rsvp-form input:focus{outline:none; border-color:var(--gold);}
+  .rsvp-note{
+    font-family:var(--label); font-size:13.5px; letter-spacing:.5px; color:var(--gold);
+    text-align:center; margin-top:4px;
+  }
+  .rsvp-form button{margin-top:10px; align-self:center;}
+  @media (max-width:520px){ .rsvp-row{flex-direction:column;} }
+
   /* ---------- Volunteer / colabora section ---------- */
   .roles-grid{
     max-width:1020px; margin:0 auto 52px;
@@ -480,7 +502,7 @@
 
     <p class="hero-meta">12 de Agosto — 20 de Septiembre 2026 <span class="dot">·</span> Faro a Colón, Santo Domingo</p>
 
-    <a href="mailto:ministerioprofeticohsv@gmail.com?subject=Confirmo%20mi%20asistencia%20al%20Cierre%20-%2020%20de%20Septiembre&body=Nombre%3A%0AProvincia%2Fciudad%3A%0AN%C3%BAmero%20de%20personas%3A%0ATel%C3%A9fono%3A" class="cta-primary">Confirmar Asistencia</a>
+    <a href="#rsvp" class="cta-primary">Confirmar Asistencia</a>
     <a href="https://www.instagram.com/p/Db_xVTokUSI/?igsh=MWlzM2Nwbzlxb3hyeg==" class="cta-secondary" target="_blank" rel="noopener">Conéctate a los Directos</a>
 
     <p class="hero-live" id="hero-live"></p>
@@ -590,7 +612,7 @@
   <div class="wrap">
     <p class="kicker reveal">Día 40</p>
     <h2 class="h-title reveal">Cierre · 20 de Septiembre 2026</h2>
-    <p class="h-sub reveal">Después de 32 días por las provincias y 8 días de cierre en Santo Domingo, la nación se congrega en un mismo lugar.</p>
+    <p class="h-sub reveal">Después de 31 días por las provincias y el Distrito Nacional, y 8 días de cierre en Santo Domingo, la nación se congrega en un mismo lugar.</p>
 
     <div class="close-wrap">
       <div class="map-frame reveal">
@@ -614,12 +636,34 @@
           <p class="fval">Cierre Masivo</p>
           <p class="fdesc">Cierre masivo del ciclo de 7 años convocado en 2019.</p>
         </div>
+        <div class="fact">
+          <p class="flabel">Vestimenta</p>
+          <p class="fval">Blanco</p>
+          <p class="fdesc">Vestimos de blanco como señal de consagración para el cierre. Se pueden llevar detalles en los colores patrios como muestra de identidad nacional. Pedimos vestimenta respetable: nada de ropa corta ni ajustada.</p>
+        </div>
       </div>
     </div>
 
-    <div class="close-cta reveal">
-      <p>Confirma tu asistencia al Cierre Masivo del 20 de septiembre.</p>
-      <a href="mailto:ministerioprofeticohsv@gmail.com?subject=Confirmo%20mi%20asistencia%20al%20Cierre%20-%2020%20de%20Septiembre&body=Nombre%3A%0AProvincia%2Fciudad%3A%0AN%C3%BAmero%20de%20personas%3A%0ATel%C3%A9fono%3A" class="cta-primary">Confirmar Asistencia</a>
+    <div class="rsvp-box reveal" id="rsvp">
+      <h4>Confirma tu Asistencia</h4>
+      <p>Cierre Masivo · 20 de septiembre de 2026 · Faro a Colón</p>
+      <form action="https://formsubmit.co/ministerioprofeticohsv@gmail.com" method="POST" class="rsvp-form">
+        <input type="hidden" name="_subject" value="Confirmación de asistencia — Cierre 20 de Septiembre">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://ministerioprofeticohsv.github.io/AyunoRD2019-2026/?asistencia=confirmada#cierre">
+        <div class="rsvp-row">
+          <input type="text" name="Nombre" placeholder="Nombre completo" required>
+          <input type="text" name="Provincia o ciudad" placeholder="Provincia / ciudad" required>
+        </div>
+        <div class="rsvp-row">
+          <input type="number" name="Número de personas" placeholder="Número de personas" min="1" required>
+          <input type="tel" name="Teléfono" placeholder="Teléfono" required>
+        </div>
+        <input type="email" name="email" placeholder="Correo (opcional, para responderte)">
+        <p class="rsvp-note">Vestimenta: blanco, con detalles opcionales en los colores patrios. Vestimenta respetable — sin ropa corta ni ajustada.</p>
+        <button type="submit" class="cta-primary">Confirmar Asistencia</button>
+      </form>
       <p class="close-cta-sub">¿Quieres colaborar en seguridad, parqueo o logística? <a href="#colabora">Sirve con nosotros →</a></p>
     </div>
   </div>
@@ -700,6 +744,17 @@
 
 <script>
 (function(){
+  // ---- RSVP thank-you message after FormSubmit redirect ----
+  try{
+    var params = new URLSearchParams(window.location.search);
+    if(params.get('asistencia') === 'confirmada'){
+      var rsvpBox = document.getElementById('rsvp');
+      if(rsvpBox){
+        rsvpBox.innerHTML = '<h4>¡Gracias por confirmar!</h4><p>Hemos recibido tu asistencia para el Cierre Masivo del 20 de septiembre. Nos vemos en el Faro a Colón.</p>';
+      }
+    }
+  }catch(e){}
+
   // ---- data: agenda oficial del ministerio, 12 Ago – 20 Sep 2026 ----
   // Días 17–20 (28–31 Ago) no venían en la agenda proporcionada: se completan
   // con las 4 provincias del listado oficial de RD que no aparecen en ningún
@@ -733,7 +788,22 @@
   var months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
   function fmt(d){ return d.getDate()+" "+months[d.getMonth()]; }
 
-  var today = new Date(); today.setHours(0,0,0,0);
+  // "Hoy" se calcula siempre según la hora de Santo Domingo (UTC-4, sin horario
+  // de verano), no la del dispositivo de quien visita la web — para que el día
+  // del ayuno no cambie antes de tiempo si alguien mira la web desde otra zona horaria.
+  function todayInSantoDomingo(){
+    var parts = new Intl.DateTimeFormat('en-US', {
+      timeZone:'America/Santo_Domingo', year:'numeric', month:'2-digit', day:'2-digit'
+    }).formatToParts(new Date());
+    var y,m,d;
+    parts.forEach(function(p){
+      if(p.type==='year') y=+p.value;
+      if(p.type==='month') m=+p.value;
+      if(p.type==='day') d=+p.value;
+    });
+    return new Date(y, m-1, d);
+  }
+  var today = todayInSantoDomingo();
 
   var grid = document.getElementById('cal-grid');
   var todayIndex = -1;

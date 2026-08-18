@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ayuno de 40 Días· Ministerio Profético Haciendo Su Voluntad</title>
-<meta name="description" content="Cierre de 7 años de ayuno nacional. 32 días, 32 provincias. 8 días de cierre en Santo Domingo. Cierre Masivo, 20 de septiembre de 2026, Faro a Colón.">
+<meta name="description" content="Cierre de 7 años de ayuno nacional. 31 días de provincias y Distrito Nacional. 8 días de cierre en Gran Santo Domingo. Cierre Masivo, 20 de septiembre de 2026, Faro a Colón.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -211,6 +211,19 @@
   }
   .cta-primary:hover{transform:translateY(-2px); box-shadow:0 14px 34px -6px rgba(201,162,78,0.6);}
 
+  .cta-secondary{
+    display:inline-block; margin-top:38px; margin-left:18px;
+    background:transparent; border:1px solid var(--gold);
+    color:var(--gold-bright); font-family:var(--label); font-weight:600;
+    letter-spacing:2px; text-transform:uppercase; font-size:16px;
+    padding:15px 44px; border-radius:2px;
+    transition:background .3s ease, color .3s ease, transform .3s ease;
+  }
+  .cta-secondary:hover{background:var(--gold); color:var(--navy-deep); transform:translateY(-2px);}
+  @media (max-width:520px){
+    .cta-secondary{margin-left:0; margin-top:16px; display:block;}
+  }
+
   .hero-live{
     margin-top:30px; font-family:var(--label); font-size:15px; letter-spacing:1.5px; color:var(--gold);
     text-transform:uppercase;
@@ -315,6 +328,7 @@
   .swatch.today{background:var(--gold-bright); box-shadow:0 0 8px 2px rgba(232,205,142,.6);}
   .swatch.upcoming{background:transparent;}
   .swatch.closing{background:var(--navy-mid); border-color:var(--gold);}
+  .swatch.pending{background:transparent; border-style:dashed;}
 
   .cal-grid{
     max-width:1100px; margin:0 auto;
@@ -335,6 +349,8 @@
   .cal-day.closing .d-prov{color:var(--gold-bright);}
   .cal-day.finale{border-color:var(--gold); background:linear-gradient(180deg, rgba(201,162,78,0.22), rgba(21,42,92,0.2));}
   .cal-day.finale .d-prov{color:var(--gold-bright);}
+  .cal-day.pending{border-style:dashed; border-color:var(--gold-dim); opacity:.65;}
+  .cal-day.pending .d-prov{color:var(--ink-dim); font-style:italic;}
 
   /* ---------- Section 5: cierre ---------- */
   .close-wrap{
@@ -435,6 +451,7 @@
       <li><a href="#calendario">Calendario</a></li>
       <li><a href="#cierre">Cierre</a></li>
       <li><a href="#colabora">Colabora</a></li>
+      <li><a href="https://www.instagram.com/p/Db_xVTokUSI/?igsh=MWlzM2Nwbzlxb3hyeg==" target="_blank" rel="noopener">Directos</a></li>
     </ul>
     <a href="#cierre" class="nav-cta">Únete al Cierre</a>
   </nav>
@@ -461,6 +478,7 @@
     <p class="hero-meta">12 de Agosto — 20 de Septiembre 2026 <span class="dot">·</span> Faro a Colón, Santo Domingo</p>
 
     <a href="#cierre" class="cta-primary">Únete al Cierre</a>
+    <a href="https://www.instagram.com/p/Db_xVTokUSI/?igsh=MWlzM2Nwbzlxb3hyeg==" class="cta-secondary" target="_blank" rel="noopener">Conéctate a los Directos</a>
 
     <p class="hero-live" id="hero-live"></p>
   </div>
@@ -474,14 +492,14 @@
 
     <div class="split-cards">
       <div class="card reveal">
-        <div class="num">32</div>
-        <h3>Días · 32 Provincias</h3>
-        <p>Una provincia de la República Dominicana en ayuno cada día, del 12 de agosto al 12 de septiembre de 2026. Cada territorio tiene su día señalado en el calendario nacional.</p>
+        <div class="num">31</div>
+        <h3>Días · Provincias y Distrito Nacional</h3>
+        <p>Cada provincia de la República Dominicana, y el Distrito Nacional, sostienen su día de ayuno del 12 de agosto al 11 de septiembre de 2026.</p>
       </div>
       <div class="card reveal">
         <div class="num">08</div>
         <h3>Días de Cierre</h3>
-        <p>Del 13 al 20 de septiembre, el ayuno se concentra en Santo Domingo para sellar en un mismo lugar lo que se sembró provincia por provincia durante siete años.</p>
+        <p>Del 12 al 19 de septiembre, el ayuno recorre los municipios del Gran Santo Domingo para sellar en la capital lo que se sembró provincia por provincia durante siete años.</p>
       </div>
     </div>
 
@@ -558,6 +576,7 @@
       <span><i class="swatch today"></i>Hoy</span>
       <span><i class="swatch upcoming"></i>Por venir</span>
       <span><i class="swatch closing"></i>Cierre en Santo Domingo</span>
+      <span><i class="swatch pending"></i>Sin confirmar</span>
     </div>
 
     <div class="cal-grid reveal" id="cal-grid"></div>
@@ -639,7 +658,7 @@
     <div class="volunteer-cta reveal">
       <h4>Sirve en el cierre del ciclo</h4>
       <p>Cuéntanos en qué área te gustaría apoyar y te contactaremos con los detalles de tu turno.</p>
-      <a href="mailto:voluntarios@ministerioprofeticohsv.org?subject=Quiero%20colaborar%20el%2020%20de%20septiembre&body=Nombre%3A%0AProvincia%2Fciudad%3A%0AÁrea%20en%20la%20que%20deseo%20colaborar%20(Seguridad%2C%20Parqueo%2C%20Logística%2C%20Hospitalidad%2C%20Primeros%20Auxilios%2C%20Oración)%3A%0ATeléfono%3A" class="cta-primary">Quiero Colaborar</a>
+      <a href="mailto:ministerioprofeticohsv@gmail.com?subject=Quiero%20colaborar%20el%2020%20de%20septiembre&body=Nombre%3A%0AProvincia%2Fciudad%3A%0AÁrea%20en%20la%20que%20deseo%20colaborar%20(Seguridad%2C%20Parqueo%2C%20Logística%2C%20Hospitalidad%2C%20Oración)%3A%0ATeléfono%3A" class="cta-primary">Quiero Colaborar</a>
     </div>
   </div>
 </section>
@@ -664,7 +683,11 @@
       <div class="foot-col">
         <h6>Colabora</h6>
         <a href="#colabora">Voluntariado</a>
-        <a href="mailto:voluntarios@ministerioprofeticohsv.org">voluntarios@ministerioprofeticohsv.org</a>
+        <a href="mailto:ministerioprofeticohsv@gmail.com">ministerioprofeticohsv@gmail.com</a>
+      </div>
+      <div class="foot-col">
+        <h6>Síguenos</h6>
+        <a href="https://www.instagram.com/p/Db_xVTokUSI/?igsh=MWlzM2Nwbzlxb3hyeg==" target="_blank" rel="noopener">Directos en Instagram</a>
       </div>
     </div>
   </div>
@@ -673,25 +696,34 @@
 
 <script>
 (function(){
-  // ---- data: 32 provinces, 12 Aug – 12 Sep 2026, then 8 closing days in Santo Domingo through 20 Sep ----
-  var provinces = [
-    "Azua","Bahoruco","Barahona","Dajabón","Distrito Nacional","Duarte","El Seibo","Elías Piña",
-    "Espaillat","Hato Mayor","Hermanas Mirabal","Independencia","La Altagracia","La Romana","La Vega",
-    "María Trinidad Sánchez","Monseñor Nouel","Monte Cristi","Monte Plata","Pedernales","Peravia",
-    "Puerto Plata","Samaná","San Cristóbal","San José de Ocoa","San Juan","San Pedro de Macorís",
-    "Sánchez Ramírez","Santiago","Santiago Rodríguez","Santo Domingo","Valverde"
+  // ---- data: agenda oficial del ministerio, 12 Ago – 20 Sep 2026 ----
+  // Días 17–20 (28–31 Ago) no venían en la agenda proporcionada: se completan
+  // con las 4 provincias del listado oficial de RD que no aparecen en ningún
+  // otro día (Espaillat, Hermanas Mirabal, Monseñor Nouel, La Vega), marcadas
+  // como "sin confirmar" hasta que el ministerio las verifique.
+  var schedule = [
+    "Barahona","Pedernales","Independencia","Bahoruco","Elías Piña","San Juan","Azua",
+    "San José de Ocoa","Baní","San Cristóbal","Dajabón","Monte Cristi","Santiago Rodríguez",
+    "Valverde","Puerto Plata","Santiago",
+    "Espaillat","Hermanas Mirabal","Monseñor Nouel","La Vega",
+    "Sánchez Ramírez","Duarte","María Trinidad Sánchez","Samaná","Monte Plata","Hato Mayor",
+    "El Seibo","La Romana","La Altagracia","San Pedro de Macorís","Distrito Nacional",
+    "Santo Domingo Este","Santo Domingo Norte","Santo Domingo Oeste","Los Alcarrizos",
+    "Pedro Brand","Boca Chica","San Antonio de Guerra","Barahona","Cierre Masivo"
   ];
+  var pendingDays = [17,18,19,20]; // sin confirmar por el ministerio
+  var closingDays = [32,33,34,35,36,37,38,39]; // Gran Santo Domingo
 
   var start = new Date(2026,7,12); // 12 Aug 2026
   var days = [];
-  for(var i=0;i<32;i++){
+  for(var i=0;i<40;i++){
     var d = new Date(start); d.setDate(start.getDate()+i);
-    days.push({num:i+1, date:d, label:provinces[i], type:'province'});
-  }
-  for(var j=0;j<8;j++){
-    var d2 = new Date(start); d2.setDate(start.getDate()+32+j);
-    var isFinale = (j===7);
-    days.push({num:33+j, date:d2, label:isFinale?"Cierre Masivo":"Santo Domingo", type:isFinale?'finale':'closing'});
+    var num = i+1;
+    var type = 'province';
+    if(num===40) type='finale';
+    else if(closingDays.indexOf(num)>-1) type='closing';
+    else if(pendingDays.indexOf(num)>-1) type='pending';
+    days.push({num:num, date:d, label:schedule[i], type:type});
   }
 
   var months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
@@ -707,6 +739,7 @@
     var cls = 'cal-day';
     if(day.type==='closing') cls+=' closing';
     if(day.type==='finale') cls+=' finale';
+    if(day.type==='pending') cls+=' pending';
     if(dDate.getTime() === today.getTime()){ cls+=' today'; todayIndex = idx; }
     else if(dDate.getTime() < today.getTime()){ cls+=' done'; }
     cell.className = cls;

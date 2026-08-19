@@ -419,6 +419,17 @@
   .volunteer-cta h4{font-family:var(--serif); font-size:1.5rem; color:var(--white); margin-bottom:12px; font-weight:600;}
   .volunteer-cta p{color:var(--ink-dim); font-size:16.5px; margin-bottom:26px;}
 
+  /* ---------- Ofrendas ---------- */
+  .offer-bank{font-family:var(--label); letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); font-size:14px; margin-bottom:12px;}
+  .offer-line{color:var(--ink-dim); font-size:16px; margin-bottom:8px; line-height:1.5;}
+  .offer-line strong{color:var(--cream); font-weight:600; letter-spacing:.5px;}
+  .offer-contacts{max-width:600px; margin:44px auto 0; text-align:center;}
+  .offer-contacts p{color:var(--ink-dim); font-size:16px; margin-bottom:8px;}
+  .offer-contacts strong{color:var(--cream);}
+  .offer-contacts a{color:var(--gold-bright); border-bottom:1px solid var(--gold-dim);}
+  .offer-contacts a:hover{color:var(--white);}
+  .offer-thanks{max-width:560px; margin:36px auto 0; text-align:center; color:var(--gold); font-style:italic; font-size:16px;}
+
   /* ---------- Footer ---------- */
   footer{
     background:rgba(7,14,34,0.86); border-top:1px solid var(--navy-line); padding:60px 0 34px;
@@ -434,6 +445,20 @@
     margin-top:50px; padding-top:26px; border-top:1px solid var(--navy-line);
     text-align:center; font-family:var(--label); letter-spacing:1px; color:var(--ink-dim); font-size:13px;
   }
+
+  /* ---------- Back to top ---------- */
+  #back-to-top{
+    position:fixed; right:22px; bottom:22px; z-index:90;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--gold); color:var(--navy-deep); border:none; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 22px -6px rgba(0,0,0,0.5);
+    opacity:0; pointer-events:none; transform:translateY(10px);
+    transition:opacity .3s ease, transform .3s ease, background .25s ease;
+  }
+  #back-to-top.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+  #back-to-top:hover{background:var(--gold-bright);}
+  @media (max-width:640px){ #back-to-top{right:16px; bottom:16px; width:42px; height:42px;} }
 
   /* ---------- reveal on scroll ---------- */
   .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease;}
@@ -476,7 +501,7 @@
       <li><a href="#calendario">Calendario</a></li>
       <li><a href="#cierre">Cierre</a></li>
       <li><a href="#colabora">Colabora</a></li>
-      <li><a href="#ofrenda">Ofrenda</a></li>
+      <li><a href="#ofrendas">Ofrendas</a></li>
       <li><a href="https://www.youtube.com/watch?v=CC7Fql1rISE" target="_blank" rel="noopener">Directos</a></li>
     </ul>
     <a href="#cierre" class="nav-cta">Únete al Cierre</a>
@@ -648,23 +673,19 @@
     <div class="rsvp-box reveal" id="rsvp">
       <h4>Confirma tu Asistencia</h4>
       <p>Cierre Masivo · 20 de septiembre de 2026 · Faro a Colón</p>
-      <form action="https://formsubmit.co/ministerioprofeticohsv@gmail.com" method="POST" class="rsvp-form">
-        <input type="hidden" name="_subject" value="Confirmación de asistencia — Cierre 20 de Septiembre">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://ministerioprofeticohsv.github.io/AyunoRD2019-2026/?asistencia=confirmada#cierre">
+      <form id="rsvp-google-form" class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdREa65TB80CRWeUfjCaBWFTSZ3ECm8oZRaprebceS0yPupPg/formResponse" method="POST" target="rsvp-hidden-iframe">
         <div class="rsvp-row">
-          <input type="text" name="Nombre" placeholder="Nombre completo" required>
-          <input type="text" name="Provincia o ciudad" placeholder="Provincia / ciudad" required>
+          <input type="text" name="entry.877086558" placeholder="Nombre completo" required>
+          <input type="text" name="entry.1424661284" placeholder="Provincia / ciudad" required>
         </div>
         <div class="rsvp-row">
-          <input type="number" name="Número de personas" placeholder="Número de personas" min="1" required>
-          <input type="tel" name="Teléfono" placeholder="Teléfono" required>
+          <input type="number" name="entry.1461741463" placeholder="Número de personas" min="1" required>
+          <input type="tel" name="entry.2606285" placeholder="Teléfono" required>
         </div>
-        <input type="email" name="email" placeholder="Correo (opcional, para responderte)">
         <p class="rsvp-note">Vestimenta: blanco, con detalles opcionales en los colores patrios. Vestimenta respetable — sin ropa corta ni ajustada.</p>
         <button type="submit" class="cta-primary">Confirmar Asistencia</button>
       </form>
+      <iframe name="rsvp-hidden-iframe" style="display:none" aria-hidden="true"></iframe>
       <p class="close-cta-sub">¿Quieres colaborar en seguridad, parqueo o logística? <a href="#colabora">Sirve con nosotros →</a></p>
     </div>
   </div>
@@ -731,33 +752,51 @@
   </div>
 </section>
 
-<section id="ofrenda">
+<section id="ofrendas">
   <div class="wrap">
-    <p class="kicker reveal">Ofrenda y Siembra</p>
-    <h2 class="h-title reveal">Apoya este Cierre</h2>
-    <p class="h-sub reveal">Este recorrido de 40 días y el Cierre Masivo en el Faro a Colón se sostienen también con la ofrenda del pueblo. Si deseas sembrar en este cierre de ciclo, estas son las vías disponibles.</p>
+    <p class="kicker reveal">Ofrenda Voluntaria</p>
+    <h2 class="h-title reveal">Sembrar No Es Requisito. Es Honra.</h2>
+    <p class="h-sub reveal">La entrada al Cierre Masivo es completamente libre. Si tu corazón desea sembrar en la obra de intercesión nacional, estas son las vías para hacerlo.</p>
 
-    <div class="close-facts reveal" style="border-left:1px solid var(--gold); padding-left:36px; max-width:640px; margin:0 auto;">
-      <div class="fact">
-        <p class="flabel">Transferencia Bancaria</p>
-        <p class="fval">Pendiente de confirmar</p>
-        <p class="fdesc">Banco, número de cuenta y titular — pendientes de que el ministerio los facilite.</p>
+    <div class="split-cards">
+      <div class="card reveal">
+        <h3>En República Dominicana</h3>
+        <p class="offer-bank">Banco de Reservas</p>
+        <p class="offer-line"><strong>9601220070</strong> — cuenta de ahorros en dólares</p>
+        <p class="offer-line"><strong>9603731929</strong> — cuenta de ahorros en pesos</p>
       </div>
-      <div class="fact">
-        <p class="flabel">Zelle</p>
-        <p class="fval">Pendiente de confirmar</p>
-        <p class="fdesc">Correo o teléfono asociado a la cuenta Zelle del ministerio.</p>
-      </div>
-      <div class="fact">
-        <p class="flabel">En Persona</p>
-        <p class="fval">Durante el recorrido y el Cierre Masivo</p>
-        <p class="fdesc">También puedes traer tu ofrenda en cualquiera de las jornadas provinciales o el 20 de septiembre en el Faro a Colón.</p>
+      <div class="card reveal">
+        <h3>En Estados Unidos</h3>
+        <p class="offer-bank">DCU (Digital Federal Credit Union)</p>
+        <p class="offer-line">Cuenta bancaria <strong>211391825</strong> · Routing <strong>42495094</strong></p>
+        <p class="offer-line">Free Checking account No.</p>
+        <p class="offer-line">Cash App <strong>$RoccioRodriguez</strong></p>
+        <p class="offer-line">Zelle <strong>roccio1184@gmail.com</strong> — Rocío Rodríguez</p>
       </div>
     </div>
 
-    <div class="close-cta reveal">
-      <p>¿Tienes dudas sobre cómo sembrar en este cierre?</p>
-      <a href="#colabora-form" class="cta-primary">Escríbenos</a>
+    <div class="offer-contacts reveal">
+      <p><strong>Ministro Vladimir Castro</strong> · <a href="tel:+18294144900">+1 (829) 414-4900</a></p>
+      <p><strong>Profeta Rocío Rodríguez</strong> · <a href="tel:+18294445974">+1 (829) 444-5974</a></p>
+    </div>
+
+    <p class="offer-thanks reveal">Gracias por tu generosidad y oración. Toda ofrenda es para la obra de intercesión nacional.</p>
+
+    <div class="volunteer-cta reveal" id="ofrenda-form" style="margin-top:56px;">
+      <h4>¿Ya sembraste? Cuéntanos</h4>
+      <p>Si hiciste una ofrenda o prefieres coordinar tu siembra directamente con nosotros, escríbenos.</p>
+      <form action="https://formsubmit.co/ministerioprofeticohsv@gmail.com" method="POST" class="rsvp-form">
+        <input type="hidden" name="_subject" value="Ofrenda — Cierre 20 de Septiembre">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://ministerioprofeticohsv.github.io/AyunoRD2019-2026/?ofrenda=confirmada#ofrendas">
+        <div class="rsvp-row">
+          <input type="text" name="Nombre" placeholder="Nombre completo" required>
+          <input type="text" name="Provincia o ciudad" placeholder="Provincia / ciudad" required>
+        </div>
+        <input type="tel" name="Teléfono" placeholder="Teléfono" required>
+        <button type="submit" class="cta-primary">Quiero Colaborar con una Ofrenda</button>
+      </form>
     </div>
   </div>
 </section>
@@ -782,8 +821,8 @@
       <div class="foot-col">
         <h6>Colabora</h6>
         <a href="#colabora">Voluntariado</a>
+        <a href="#ofrendas">Ofrendas</a>
         <a href="#colabora-form">ministerioprofeticohsv@gmail.com</a>
-        <a href="#ofrenda">Ofrenda y siembra</a>
       </div>
       <div class="foot-col">
         <h6>Síguenos</h6>
@@ -794,24 +833,46 @@
   <p class="foot-bottom">Ministerio Profético Haciendo Su Voluntad — Ayuno Nacional 2019 · 2026</p>
 </footer>
 
+<button id="back-to-top" aria-label="Subir al inicio" title="Subir al inicio">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+</button>
+
 <script>
 (function(){
-  // ---- RSVP thank-you message after FormSubmit redirect ----
+  // ---- Colaborar / Ofrenda: thank-you message after FormSubmit redirect (these DO email the ministry) ----
   try{
     var params = new URLSearchParams(window.location.search);
-    if(params.get('asistencia') === 'confirmada'){
-      var rsvpBox = document.getElementById('rsvp');
-      if(rsvpBox){
-        rsvpBox.innerHTML = '<h4>¡Gracias por confirmar!</h4><p>Hemos recibido tu asistencia para el Cierre Masivo del 20 de septiembre. Nos vemos en el Faro a Colón.</p>';
-      }
-    }
     if(params.get('colaborar') === 'confirmado'){
       var volBox = document.getElementById('colabora-form');
       if(volBox){
         volBox.innerHTML = '<h4>¡Gracias por servir!</h4><p>Hemos recibido tu disposición para colaborar el 20 de septiembre. Te contactaremos con los detalles de tu turno.</p>';
       }
     }
+    if(params.get('ofrenda') === 'confirmada'){
+      var offBox = document.getElementById('ofrenda-form');
+      if(offBox){
+        offBox.innerHTML = '<h4>¡Gracias por tu generosidad!</h4><p>Hemos recibido tu aviso de siembra. Que Dios multiplique lo sembrado.</p>';
+      }
+    }
   }catch(e){}
+
+  // ---- Confirmar Asistencia: envío silencioso al Google Form (vía iframe oculto) ----
+  // No hay respuesta directa del formResponse por ser cross-origin, así que se
+  // asume éxito tras el envío y se muestra el mensaje de agradecimiento.
+  (function(){
+    var rsvpForm = document.getElementById('rsvp-google-form');
+    if(!rsvpForm) return;
+    rsvpForm.addEventListener('submit', function(){
+      var btn = rsvpForm.querySelector('button[type="submit"]');
+      if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; }
+      setTimeout(function(){
+        var box = document.getElementById('rsvp');
+        if(box){
+          box.innerHTML = '<h4>¡Gracias por confirmar!</h4><p>Hemos recibido tu asistencia para el Cierre Masivo del 20 de septiembre. Nos vemos en el Faro a Colón.</p>';
+        }
+      }, 1200);
+    });
+  })();
 
   // ---- data: agenda oficial del ministerio, 12 Ago – 20 Sep 2026 ----
   // Días 17–20 (28–31 Ago) no venían en la agenda proporcionada: se completan
@@ -919,6 +980,18 @@
     } else {
       heroLive.innerHTML = 'Hoy, día '+dToday.num+' — cierre en <b>Santo Domingo</b>';
     }
+  }
+
+  // back to top
+  var backToTop = document.getElementById('back-to-top');
+  if(backToTop){
+    window.addEventListener('scroll', function(){
+      if(window.scrollY > 480){ backToTop.classList.add('show'); }
+      else{ backToTop.classList.remove('show'); }
+    });
+    backToTop.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
   }
 
   // scroll reveal

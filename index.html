@@ -267,11 +267,6 @@
   .t-item:last-child{padding-bottom:0;}
   .t-year{
     font-family:var(--serif); font-size:1.6rem; color:var(--gold-bright); text-align:right; font-weight:600;
-    position:relative;
-  }
-  .t-year::after{
-    content:""; position:absolute; right:-41px; top:8px; width:9px; height:9px; border-radius:50%;
-    background:var(--gold); box-shadow:0 0 0 4px var(--navy-deep), 0 0 12px 2px rgba(201,162,78,.5);
   }
   .t-body h4{font-family:var(--serif); font-size:1.25rem; color:var(--white); margin-bottom:8px; font-weight:600;}
   .t-body p{color:var(--ink-dim); font-size:17px;}
@@ -499,7 +494,6 @@
       <li><a href="#cierre">Cierre</a></li>
       <li><a href="#colabora">Colabora</a></li>
       <li><a href="#ofrendas">Ofrendas</a></li>
-      <li><a href="https://www.youtube.com/watch?v=CC7Fql1rISE" target="_blank" rel="noopener">Directos</a></li>
     </ul>
     <a href="#cierre" class="nav-cta">Únete al Cierre</a>
   </nav>
@@ -507,7 +501,6 @@
 
 <section class="hero">
   <div class="hero-overlay" aria-hidden="true"></div>
-
   <div class="wrap hero-inner">
     <p class="eyebrow">Ministerio Profético<span class="sub">Haciendo Su Voluntad</span></p>
     <span class="since">Desde 2019</span>
@@ -842,7 +835,7 @@
 
 <script>
 (function(){
-  // ---- RSVP Google Form Submission (Invisible POST to Google Sheets) ----
+  // ---- RSVP Google Form Submission (Invisible POST to Google Sheets) + Real-time Counter update ----
   document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('rsvp-google-form');
     if(form) {
@@ -863,7 +856,7 @@
         }).then(function() {
           form.innerHTML = '<h4 style="color:var(--gold-bright); margin-bottom:12px; font-family:var(--serif); font-size:1.5rem;">¡Gracias por confirmar!</h4><p style="color:var(--ink-dim); font-size:16px;">Hemos recibido tu asistencia. Nos vemos en el Faro a Colón.</p>';
           
-          // Sumar al contador público
+          // Sumar real al contador público en vivo cada vez que alguien envía
           var NS = 'ministerioprofeticohsv-cierre2026';
           var KEY = 'asistencia-publica';
           fetch('https://api.countapi.xyz/hit/'+NS+'/'+KEY)

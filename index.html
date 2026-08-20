@@ -124,7 +124,7 @@
 
   .nav-cta{
     display:inline-block; border:1px solid var(--gold); color:var(--gold-bright) !important;
-    padding:9px 22px; font-family:var(--label); letter-spacing:1.5px; text-transform:uppercase; font-size:14px;
+    padding:6px 16px; font-family:var(--label); letter-spacing:1px; text-transform:uppercase; font-size:12px;
     transition:background .3s ease, color .3s ease;
   }
   .nav-cta:hover{background:var(--gold); color:var(--navy-deep) !important;}
@@ -835,7 +835,21 @@
 
 <script>
 (function(){
-  // ---- RSVP Google Form Submission (Invisible POST to Google Sheets) + Real-time Counter update ----
+  var COUNT_API_URL = 'https://script.google.com/macros/s/AKfycbx4WFtXVLxuswmoQsZJQxvf_41gwyq8RUmc-cplqNzpIjhEwDFGoqZ5EqdBm7MxlCJ-/exec';
+
+  function renderRealCount(n){
+    var countEl = document.getElementById('rsvp-progress-count');
+    if(countEl) countEl.textContent = (typeof n === 'number') ? n.toLocaleString('es-DO') : '—';
+  }
+
+  function fetchRealCount(){
+    fetch(COUNT_API_URL)
+      .then(function(r){ return r.json(); })
+      .then(function(d){ renderRealCount(d && typeof d.count === 'number' ? d.count : null); })
+      .catch(function(){});
+  }
+
+  // ---- RSVP Google Form Submission (Invisible POST to Google Sheets) + real counter refresh ----
   document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('rsvp-google-form');
     if(form) {
@@ -855,18 +869,10 @@
           body: formData
         }).then(function() {
           form.innerHTML = '<h4 style="color:var(--gold-bright); margin-bottom:12px; font-family:var(--serif); font-size:1.5rem;">¡Gracias por confirmar!</h4><p style="color:var(--ink-dim); font-size:16px;">Hemos recibido tu asistencia. Nos vemos en el Faro a Colón.</p>';
-          
-          // Sumar real al contador público en vivo cada vez que alguien envía
-          var NS = 'ministerioprofeticohsv-cierre2026';
-          var KEY = 'asistencia-publica';
-          fetch('https://api.countapi.xyz/hit/'+NS+'/'+KEY)
-            .then(function(r){ return r.json(); })
-            .then(function(d){
-              var countEl = document.getElementById('rsvp-progress-count');
-              if(countEl && d && typeof d.value === 'number') {
-                countEl.textContent = d.value.toLocaleString('es-DO');
-              }
-            }).catch(function(){});
+
+          // Refrescar el contador leyendo el número real de la hoja
+          // (con un pequeño margen para que la fila nueva quede registrada)
+          setTimeout(fetchRealCount, 1800);
 
         }).catch(function(err) {
           console.error('Error al enviar:', err);
@@ -895,22 +901,8 @@
     }
   }catch(e){}
 
-  // ---- Contador público inicial de asistentes confirmados ----
-  (function(){
-    var NS = 'ministerioprofeticohsv-cierre2026';
-    var KEY = 'asistencia-publica';
-    var countEl = document.getElementById('rsvp-progress-count');
-    if(!countEl) return;
-
-    function render(n){
-      countEl.textContent = (typeof n === 'number') ? n.toLocaleString('es-DO') : '—';
-    }
-
-    fetch('https://api.countapi.xyz/get/'+NS+'/'+KEY)
-      .then(function(r){ return r.json(); })
-      .then(function(d){ render(d && typeof d.value === 'number' ? d.value : 0); })
-      .catch(function(){ render(0); });
-  })();
+  // ---- Contador público: número real leído de la Google Sheet (Apps Script) ----
+  fetchRealCount();
 
   // ---- data: agenda oficial del ministerio, 12 Ago – 20 Sep 2026 ----
   var schedule = [

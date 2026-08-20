@@ -395,6 +395,18 @@
   .rsvp-form button{margin-top:10px; align-self:center;}
   @media (max-width:520px){ .rsvp-row{flex-direction:column;} }
 
+  .rsvp-progress-text{
+    font-family:var(--label); letter-spacing:1px; color:var(--ink-dim); font-size:17px; text-align:center;
+  }
+  .rsvp-progress-text b{font-family:var(--serif); font-size:1.5rem; color:var(--gold-bright); font-weight:600;}
+
+  .rsvp-embed{
+    margin-top:26px; border:1px solid var(--navy-line); background:var(--white);
+    overflow:hidden; border-radius:2px; max-width:100%;
+  }
+  .rsvp-embed iframe{display:block; width:100%; max-width:100%; border:0;}
+  @media (max-width:480px){ .rsvp-embed iframe{height:1250px;} }
+
   /* ---------- Volunteer / colabora section ---------- */
   .roles-grid{
     max-width:1020px; margin:0 auto 52px;
@@ -673,19 +685,15 @@
     <div class="rsvp-box reveal" id="rsvp">
       <h4>Confirma tu Asistencia</h4>
       <p>Cierre Masivo · 20 de septiembre de 2026 · Faro a Colón</p>
-      <form id="rsvp-google-form" class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdREa65TB80CRWeUfjCaBWFTSZ3ECm8oZRaprebceS0yPupPg/formResponse" method="POST" target="rsvp-hidden-iframe">
-        <div class="rsvp-row">
-          <input type="text" name="entry.877086558" placeholder="Nombre completo" required>
-          <input type="text" name="entry.1424661284" placeholder="Provincia / ciudad" required>
-        </div>
-        <div class="rsvp-row">
-          <input type="number" name="entry.1461741463" placeholder="Número de personas" min="1" required>
-          <input type="tel" name="entry.2606285" placeholder="Teléfono" required>
-        </div>
-        <p class="rsvp-note">Vestimenta: blanco, con detalles opcionales en los colores patrios. Vestimenta respetable — sin ropa corta ni ajustada.</p>
-        <button type="submit" class="cta-primary">Confirmar Asistencia</button>
-      </form>
-      <iframe name="rsvp-hidden-iframe" style="display:none" aria-hidden="true"></iframe>
+
+      <div class="rsvp-progress" id="rsvp-progress" style="margin-bottom:30px;">
+        <p class="rsvp-progress-text"><b id="rsvp-progress-count">—</b> personas confirmadas</p>
+      </div>
+
+      <p class="rsvp-note">Vestimenta: blanco, con detalles opcionales en los colores patrios. Vestimenta respetable — sin ropa corta ni ajustada.</p>
+      <div class="rsvp-embed">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdREa65TB80CRWeUfjCaBWFTSZ3ECm8oZRaprebceS0yPupPg/viewform?embedded=true" width="100%" height="1070" frameborder="0" marginheight="0" marginwidth="0" title="Formulario de confirmación de asistencia">Cargando…</iframe>
+      </div>
       <p class="close-cta-sub">¿Quieres colaborar en seguridad, parqueo o logística? <a href="#colabora">Sirve con nosotros →</a></p>
     </div>
   </div>
@@ -856,22 +864,39 @@
     }
   }catch(e){}
 
-  // ---- Confirmar Asistencia: envío silencioso al Google Form (vía iframe oculto) ----
-  // No hay respuesta directa del formResponse por ser cross-origin, así que se
-  // asume éxito tras el envío y se muestra el mensaje de agradecimiento.
+  // ---- Contador público de asistentes confirmados ----
+  // No lee ni toca los datos reales del formulario (eso sigue privado en el
+  // Google Sheet). Solo detecta cuándo el iframe del formulario recarga su
+  // contenido — lo que ocurre automáticamente tras un envío exitoso — y suma
+  // 1 a un contador público (CountAPI, gratis, anónimo, sin datos personales).
   (function(){
-    var rsvpForm = document.getElementById('rsvp-google-form');
-    if(!rsvpForm) return;
-    rsvpForm.addEventListener('submit', function(){
-      var btn = rsvpForm.querySelector('button[type="submit"]');
-      if(btn){ btn.disabled = true; btn.textContent = 'Enviando…'; }
-      setTimeout(function(){
-        var box = document.getElementById('rsvp');
-        if(box){
-          box.innerHTML = '<h4>¡Gracias por confirmar!</h4><p>Hemos recibido tu asistencia para el Cierre Masivo del 20 de septiembre. Nos vemos en el Faro a Colón.</p>';
+    var NS = 'ministerioprofeticohsv-cierre2026';
+    var KEY = 'asistencia-publica';
+    var countEl = document.getElementById('rsvp-progress-count');
+    if(!countEl) return;
+
+    function render(n){
+      countEl.textContent = (typeof n === 'number') ? n.toLocaleString('es-DO') : '—';
+    }
+
+    fetch('https://api.countapi.xyz/get/'+NS+'/'+KEY)
+      .then(function(r){ return r.json(); })
+      .then(function(d){ render(d && typeof d.value === 'number' ? d.value : 0); })
+      .catch(function(){ render(0); });
+
+    var iframeEl = document.querySelector('.rsvp-embed iframe');
+    if(iframeEl){
+      var loadCount = 0;
+      iframeEl.addEventListener('load', function(){
+        loadCount++;
+        if(loadCount > 1){
+          fetch('https://api.countapi.xyz/hit/'+NS+'/'+KEY)
+            .then(function(r){ return r.json(); })
+            .then(function(d){ render(d && typeof d.value === 'number' ? d.value : null); })
+            .catch(function(){});
         }
-      }, 1200);
-    });
+      });
+    }
   })();
 
   // ---- data: agenda oficial del ministerio, 12 Ago – 20 Sep 2026 ----

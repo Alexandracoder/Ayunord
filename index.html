@@ -842,11 +842,22 @@
     if(countEl) countEl.textContent = (typeof n === 'number') ? n.toLocaleString('es-DO') : '—';
   }
 
+  // JSONP: evita el bloqueo de CORS de Apps Script cargando la respuesta
+  // como un <script>, en vez de un fetch/XHR normal.
   function fetchRealCount(){
-    fetch(COUNT_API_URL)
-      .then(function(r){ return r.json(); })
-      .then(function(d){ renderRealCount(d && typeof d.count === 'number' ? d.count : null); })
-      .catch(function(){});
+    var cbName = 'mphsvRsvpCount_' + Date.now();
+    var script = document.createElement('script');
+    window[cbName] = function(data){
+      renderRealCount(data && typeof data.count === 'number' ? data.count : null);
+      delete window[cbName];
+      if(script.parentNode) script.parentNode.removeChild(script);
+    };
+    script.src = COUNT_API_URL + '?callback=' + cbName;
+    script.onerror = function(){
+      delete window[cbName];
+      if(script.parentNode) script.parentNode.removeChild(script);
+    };
+    document.body.appendChild(script);
   }
 
   // ---- RSVP Google Form Submission (Invisible POST to Google Sheets) + real counter refresh ----

@@ -129,7 +129,11 @@
   }
   .nav-cta:hover{background:var(--gold); color:var(--navy-deep) !important;}
 
-  .nav-toggle{display:none; background:none; border:1px solid var(--gold-dim); color:var(--gold-bright); width:40px; height:40px; font-size:20px; cursor:pointer;}
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--gold-dim); color:var(--gold-bright);
+    width:40px; height:40px; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .nav-actions{display:flex; align-items:center; gap:12px;}
 
   /* ---------- Hero ---------- */
   .hero{
@@ -458,14 +462,27 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:900px){
-    nav ul{display:none;}
-    .nav-toggle{display:block;}
+    nav.wrap{position:relative; flex-wrap:wrap;}
+    nav ul{
+      display:none;
+      position:absolute; top:100%; left:0; right:0; z-index:60;
+      flex-direction:column; gap:0;
+      background:rgba(7,14,34,0.98); backdrop-filter:blur(10px);
+      border-top:1px solid var(--navy-line); border-bottom:1px solid var(--navy-line);
+      padding:8px 0;
+    }
+    nav ul.nav-open{display:flex;}
+    nav ul li{width:100%;}
+    nav ul li a{display:block; padding:14px 32px;}
+    nav ul li a::after{display:none;}
+    .nav-toggle{display:flex;}
     .split-cards{grid-template-columns:1fr;}
     .history-grid{grid-template-columns:1fr;}
     .close-wrap{grid-template-columns:1fr;}
     .close-facts{border-left:none; border-top:1px solid var(--gold); padding-left:0; padding-top:30px;}
     .timeline::before{left:64px;}
     .t-item{grid-template-columns:64px 1fr; gap:20px;}
+    .cal-grid{grid-template-columns:repeat(5,1fr);}
   }
   @media (max-width:640px){
     .wrap{padding:0 20px;}
@@ -486,7 +503,7 @@
       <div class="crest">MP</div>
       <div class="btext">Ministerio Profético<small>Haciendo Su Voluntad</small></div>
     </a>
-    <ul>
+    <ul id="nav-menu">
       <li><a href="#">Inicio</a></li>
       <li><a href="#que-es">Qué es</a></li>
       <li><a href="#historia">Historia</a></li>
@@ -495,7 +512,12 @@
       <li><a href="#colabora">Colabora</a></li>
       <li><a href="#ofrendas">Ofrendas</a></li>
     </ul>
-    <a href="#cierre" class="nav-cta">Únete al Cierre</a>
+    <div class="nav-actions">
+      <a href="#cierre" class="nav-cta">Únete al Cierre</a>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+        <svg id="nav-toggle-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
   </nav>
 </header>
 
@@ -663,7 +685,7 @@
 
     <div class="rsvp-box reveal" id="rsvp">
       <h4>Confirma tu Asistencia</h4>
-      <p>Cierre Masivo · 20 de septiembre de 2026 · Faro a Colón</p>
+      <p>Cierre Masivo · 20 de septiembre de 2026 · Faro a Colón . 4 de la tarde</p>
 
       <div class="rsvp-progress" id="rsvp-progress" style="margin-bottom:24px;">
         <p class="rsvp-progress-text"><b id="rsvp-progress-count">—</b> personas confirmadas</p>
@@ -1013,6 +1035,28 @@
     } else {
       heroLive.innerHTML = 'Hoy, día '+dToday.num+' — cierre en <b>Santo Domingo</b>';
     }
+  }
+
+  // mobile nav toggle
+  var navToggle = document.getElementById('nav-toggle');
+  var navMenu = document.getElementById('nav-menu');
+  if(navToggle && navMenu){
+    navToggle.addEventListener('click', function(){
+      var isOpen = navMenu.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    navMenu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navMenu.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(navMenu.classList.contains('nav-open') && !navMenu.contains(e.target) && !navToggle.contains(e.target)){
+        navMenu.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   var backToTop = document.getElementById('back-to-top');
